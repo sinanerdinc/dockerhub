@@ -3,13 +3,9 @@ LABEL authors="Sinan Erdinc <mail@sinanerdinc.com>"
 
 RUN apt-get --allow-releaseinfo-change update && apt-get install -q -y \
     curl \
-    wget \
-    zip \
+    ca-certificates \
     unzip \
     openjdk-11-jdk \
-    apt-transport-https \
-    gnupg2 \
-    ca-certificates\
     maven \
     nodejs \
     npm
@@ -22,10 +18,10 @@ ENV PATH=$HOME/.gauge:$PATH
 RUN gauge install java && \
     gauge install html-report && \
     gauge install xml-report && \
-    gauge install screenshot \
+    gauge install screenshot
 
 # Install lambdatest tunnel
-RUN wget https://downloads.lambdatest.com/tunnel/v3/linux/amd64/LT_Linux.zip \
+RUN curl -o LT_Linux.zip https://downloads.lambdatest.com/tunnel/v3/linux/64bit/LT_Linux.zip \
     && unzip LT_Linux.zip \
     && rm LT_Linux.zip \
     && chmod +x LT
