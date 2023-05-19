@@ -1,5 +1,5 @@
 FROM ubuntu:23.10
-LABEL MAINTAINER="Sinan Erdinc <mail@sinanerdinc.com>"
+LABEL authors="Sinan Erdinc <mail@sinanerdinc.com>"
 
 RUN apt-get --allow-releaseinfo-change update && apt-get install -q -y \
     curl \
